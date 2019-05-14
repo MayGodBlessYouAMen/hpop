@@ -246,7 +246,7 @@ namespace OpenPop.Mime.Decode
 
 			// We will now believe that the string sent to us, was actually not encoded
 			// Therefore it must be in US-ASCII and we will return the bytes it corrosponds to
-			return Encoding.ASCII.GetBytes(decode);
+			return ConstData.DefaultEncoding.GetBytes(decode);
 		}
 
 		/// <summary>
@@ -317,7 +317,7 @@ namespace OpenPop.Mime.Decode
 
 				// So we choose to believe this is actually an un-encoded string
 				// Therefore it must be in US-ASCII and we will return the bytes it corrosponds to
-				return Encoding.ASCII.GetBytes(decode);
+				return ConstData.DefaultEncoding.GetBytes(decode);
 			}
 		}
 	}

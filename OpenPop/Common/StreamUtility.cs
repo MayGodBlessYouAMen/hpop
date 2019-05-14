@@ -59,7 +59,7 @@ namespace OpenPop.Common
 		public static string ReadLineAsAscii(Stream stream)
 		{
 			byte[] readFromStream = ReadLineAsBytes(stream);
-			return readFromStream != null ? Encoding.ASCII.GetString(readFromStream) : null;
+			return readFromStream != null ?  ConstData.DefaultEncoding.GetString(readFromStream) : null;
 		}
 	}
 }

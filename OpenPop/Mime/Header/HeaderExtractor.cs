@@ -63,7 +63,7 @@ namespace OpenPop.Mime.Header
 
 			// The headers are always in ASCII - therefore we can convert the header part into a string
 			// using US-ASCII encoding
-			string headersString = Encoding.ASCII.GetString(fullRawMessage, 0, endOfHeaderLocation);
+			string headersString = ConstData.DefaultEncoding.GetString(fullRawMessage, 0, endOfHeaderLocation);
 
 			// Now parse the headers to a NameValueCollection
 			NameValueCollection headersUnparsedCollection = ExtractHeaders(headersString);

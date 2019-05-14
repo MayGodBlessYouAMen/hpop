@@ -79,6 +79,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConstData.cs" />
     <Compile Include="IParsingErrorHandler.cs" />
     <Compile Include="ParseError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

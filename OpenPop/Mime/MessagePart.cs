@@ -258,7 +258,7 @@ namespace OpenPop.Mime
 		private static Encoding ParseBodyEncoding(string characterSet)
 		{
 			// Default encoding in Mime messages is US-ASCII
-			Encoding encoding = Encoding.ASCII;
+			Encoding encoding = ConstData.DefaultEncoding;
 
 			// If the character set was specified, find the encoding that the character
 			// set describes, and use that one instead
@@ -482,11 +482,11 @@ namespace OpenPop.Mime
 			{
 				case ContentTransferEncoding.QuotedPrintable:
 					// If encoded in QuotedPrintable, everything in the body is in US-ASCII
-					return QuotedPrintable.DecodeContentTransferEncoding(Encoding.ASCII.GetString(messageBody));
+					return QuotedPrintable.DecodeContentTransferEncoding(ConstData.DefaultEncoding.GetString(messageBody));
 
 				case ContentTransferEncoding.Base64:
 					// If encoded in Base64, everything in the body is in US-ASCII
-					return Base64.Decode(Encoding.ASCII.GetString(messageBody));
+					return Base64.Decode(ConstData.DefaultEncoding.GetString(messageBody));
 
 				case ContentTransferEncoding.SevenBit:
 				case ContentTransferEncoding.Binary:

@@ -27,7 +27,7 @@ namespace OpenPop.Pop3
 			// The APOP command authorizes itself by using the password together
 			// with the server timestamp. This way the password is not transmitted
 			// in clear text, and the server can still verify we have the password.
-			byte[] digestToHash = Encoding.ASCII.GetBytes(serverTimestamp + password);
+			byte[] digestToHash = ConstData.DefaultEncoding.GetBytes(serverTimestamp + password);
 
 			using (MD5 md5 = new MD5CryptoServiceProvider())
 			{

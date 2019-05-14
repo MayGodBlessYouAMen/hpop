@@ -83,7 +83,7 @@ namespace OpenPop.Pop3
 			string hex = BitConverter.ToString(digestValue).Replace("-", "").ToLowerInvariant();
 
 			// Include the username in the resulting base64 encoded response
-			return Convert.ToBase64String(Encoding.ASCII.GetBytes(username + " " + hex));
+			return Convert.ToBase64String(ConstData.DefaultEncoding.GetBytes(username + " " + hex));
 		}
 
 		/// <summary>
@@ -184,7 +184,7 @@ namespace OpenPop.Pop3
 				throw new ArgumentNullException("password");
 
 			// Get the password in bytes
-			byte[] passwordBytes = Encoding.ASCII.GetBytes(password);
+			byte[] passwordBytes = ConstData.DefaultEncoding.GetBytes(password);
 
 			// If the length is larger than 64, we need to
 			if (passwordBytes.Length > 64)

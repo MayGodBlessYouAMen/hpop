@@ -904,7 +904,7 @@ namespace OpenPop.Pop3
 		private void SendCommand(string command)
 		{
 			// Convert the command with CRLF afterwards as per RFC to a byte array which we can write
-			byte[] commandBytes = Encoding.ASCII.GetBytes(command + "\r\n");
+			byte[] commandBytes = ConstData.DefaultEncoding.GetBytes(command + "\r\n");
 
 			DefaultLogger.Log.LogDebug(string.Format("SendCommand: \"{0}\"", command));
 
@@ -990,7 +990,7 @@ namespace OpenPop.Pop3
 					if (!first)
 					{
 						// Write CRLF which was not included in the lineRead bytes of last line
-						byte[] crlfPair = Encoding.ASCII.GetBytes("\r\n");
+						byte[] crlfPair = ConstData.DefaultEncoding.GetBytes("\r\n");
 						byteArrayBuilder.Write(crlfPair, 0, crlfPair.Length);
 					} else
 					{
@@ -1015,7 +1015,7 @@ namespace OpenPop.Pop3
 				// If we are fetching a header - add an extra line to denote the headers ended
 				if (askOnlyForHeaders)
 				{
-					byte[] crlfPair = Encoding.ASCII.GetBytes("\r\n");
+					byte[] crlfPair = ConstData.DefaultEncoding.GetBytes("\r\n");
 					byteArrayBuilder.Write(crlfPair, 0, crlfPair.Length);
 				}
 
@@ -1051,7 +1051,7 @@ namespace OpenPop.Pop3
 			// on it. For performance reasons we check if the length is equal to 1
 			// so that we do not need to decode a long message string just to see if
 			// it is the last line
-			return lineReceived.Length == 1 && IsLastLineInMultiLineResponse(Encoding.ASCII.GetBytes(lineReceived));
+			return lineReceived.Length == 1 && IsLastLineInMultiLineResponse(ConstData.DefaultEncoding.GetBytes(lineReceived));
 		}
 
 		/// <summary>
